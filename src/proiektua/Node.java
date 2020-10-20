@@ -1,10 +1,10 @@
 package proiektua;
 
-public class Node {
-	public String data;
+public class Node<T> {
+	public T data;
 	public Node next;
 	
-	public Node(String d,Node n) {
+	public Node(T d,Node n) {
 		this.data=d;
 		this.next=n;
 	}
