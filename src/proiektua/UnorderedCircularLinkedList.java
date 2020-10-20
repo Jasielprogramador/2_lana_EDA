@@ -44,7 +44,7 @@ public class UnorderedCircularLinkedList<T> extends CircularLinkedList{
 				
 				aurrekoa=unekoa;
 				unekoa=unekoa.next;
-				aurrekoa=((Node)elem);
+				aurrekoa.next=((Node)elem);
 				((Node)elem).next=unekoa;
 				
 			}
