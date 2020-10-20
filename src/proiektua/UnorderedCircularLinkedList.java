@@ -1,12 +1,13 @@
 package proiektua;
 
-import org.w3c.dom.Node;
+
 import java.util.LinkedList;
 
 
 public class UnorderedCircularLinkedList<T> extends CircularLinkedList{
 	
 	public UnorderedCircularLinkedList(String d, int c) {
+
 		super(d,c);
 	}
 
@@ -15,29 +16,41 @@ public class UnorderedCircularLinkedList<T> extends CircularLinkedList{
 		
 		// Zerrenda hutsa bada
 		if(azkenekoa==null) {
-			Node berria=new Node(elem,azkenekoa);
-			azkenekoa=(Node)elem;	
+			azkenekoa=(Node)elem;
+			((Node) elem).next=azkenekoa;
 		}
 		else {
-			Node berria=new Node(elem,azkenekoa.next);
-			azkenekoa.next=berria;
+			azkenekoa.next=(Node)elem;
+			((Node) elem).next=azkenekoa.next.next;
 		}
 	}
 	
 	public void addToRear(T elem) {
+
 		
 	}
 	
 	public void addAfter(T elem, T target) {
-		Node unekoa=(Node)super.last.next;
+
+		
+		//Target zerrendan dago
+		
+		Node unekoa=super.last.next;
 		Node aurrekoa;
 		boolean aurkitua=false;
 		while(unekoa!=super.last || !aurkitua) {
-			if (unekoa.data.equals(target.data)) {
+			if (unekoa.data.equals(((Node)target).data)) {
 				aurkitua=true;
-				Node berria=new Node(elem,azkenekoa.next);
 				
+				aurrekoa=unekoa;
+				unekoa=unekoa.next;
+				aurrekoa=((Node)elem);
+				((Node)elem).next=unekoa;
 				
+			}
+			else {
+				aurrekoa=unekoa;
+				unekoa=unekoa.next;
 			}
 		}
 	}

@@ -1,8 +1,6 @@
 package proiektua;
 
 import java.util.LinkedList;
-import org.w3c.dom.Node;
-import java.util.*;
 
 
 public class CircularLinkedList<T> {
