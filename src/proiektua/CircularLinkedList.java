@@ -37,7 +37,7 @@ public class CircularLinkedList<T> {
 			else {
 				Node unekoa=this.last.next;
 				emaitza=(T)this.last.next;
-				this.last.next=unekoa.next;;
+				this.last.next=unekoa.next;
 			}
 		}
 		
