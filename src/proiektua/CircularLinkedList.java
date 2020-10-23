@@ -24,7 +24,7 @@ public class CircularLinkedList<T> {
 	public T removeFirst() {
 		T emaitza=null;
 		
-		if(this.last==null) {
+		if(this.isEmpty()) {
 			System.out.println("Zerrenda hutsa");
 		}
 		else {
@@ -51,7 +51,7 @@ public class CircularLinkedList<T> {
 		
 		T emaitza=null;
 		
-		if(this.last==null) {
+		if(this.isEmpty()) {
 			System.out.println("Zerrenda hutsa");
 		}
 		else {
@@ -83,7 +83,7 @@ public class CircularLinkedList<T> {
 		Node unekoa=this.last.next;
 		T emaitza=null;
 		
-		if(this.last!=null) {
+		if(!this.isEmpty()) {
 			//Elementu bakarra
 			if(unekoa==this.last) {
 				emaitza=(T)this.last;
