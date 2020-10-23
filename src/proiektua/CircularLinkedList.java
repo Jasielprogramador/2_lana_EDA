@@ -123,6 +123,8 @@ public class CircularLinkedList<T> {
 	}
 	
 	public boolean contains(T elem) {
+		if(this.isEmpty()) {
+			
 		boolean emaitza=false;
 		Node unekoa=this.last.next;
 		while(unekoa!=this.last) {
