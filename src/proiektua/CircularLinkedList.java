@@ -123,19 +123,24 @@ public class CircularLinkedList<T> {
 	}
 	
 	public boolean contains(T elem) {
-		if(this.isEmpty()) {
-			
 		boolean emaitza=false;
 		Node unekoa=this.last.next;
-		while(unekoa!=this.last) {
+		if(!this.isEmpty()) {
+		
+			while(unekoa!=this.last) {
+				if(unekoa.data.equals((String)elem)) {
+					emaitza=true;
+				}
+				unekoa=unekoa.next;
+			}
 			if(unekoa.data.equals((String)elem)) {
 				emaitza=true;
 			}
-			unekoa=unekoa.next;
 		}
-		if(unekoa.data.equals((String)elem)) {
-			emaitza=true;
+		else {
+			System.out.println("Zerrenda hutsa");
 		}
+		
 		return emaitza;
 		
 	}
@@ -144,16 +149,22 @@ public class CircularLinkedList<T> {
 		boolean emaitza=false;
 		Node unekoa=this.last.next;
 		T ema=null;
-		while(unekoa!=this.last) {
+		
+		if(!this.isEmpty()) {
+			while(unekoa!=this.last) {
+				if(unekoa.data.equals((String)elem)) {
+					emaitza=true;
+					ema=(T)unekoa;
+				}
+				unekoa=unekoa.next;
+			}
 			if(unekoa.data.equals((String)elem)) {
 				emaitza=true;
 				ema=(T)unekoa;
 			}
-			unekoa=unekoa.next;
 		}
-		if(unekoa.data.equals((String)elem)) {
-			emaitza=true;
-			ema=(T)unekoa;
+		else {
+			System.out.println("Zerrenda hutsa");
 		}
 		return ema;
 	}
@@ -171,9 +182,14 @@ public class CircularLinkedList<T> {
 	public int size() {
 		Node unekoa=this.last.next;
 		int kont=0;
-		while(unekoa!=this.last) {
-			kont++;
-			unekoa=unekoa.next;
+		if(this.isEmpty()) {
+			System.out.println("Zerrenda hutsa");
+		}
+		else {
+			while(unekoa!=this.last) {
+				kont++;
+				unekoa=unekoa.next;
+			}
 		}
 		return kont+1;
 	}
@@ -200,7 +216,5 @@ public class CircularLinkedList<T> {
 			return emaitza;
 		}
 	}
-
-
 
 }
