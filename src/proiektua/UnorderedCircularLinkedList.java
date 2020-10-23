@@ -63,6 +63,14 @@ public class UnorderedCircularLinkedList<T> extends CircularLinkedList{
 			unekoa=unekoa.next;
 			
 		}
+		if (unekoa.data.equals(((Node)target).data)) {
+			aurrekoa=unekoa;
+			unekoa=unekoa.next;
+			aurrekoa.next=((Node)elem);
+			((Node)elem).next=unekoa;
+			
+		}
+		
 	}
 	
 	
