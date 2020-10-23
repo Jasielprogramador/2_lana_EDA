@@ -59,94 +59,10 @@ public class UnorderedCircularLinkedList<T> extends CircularLinkedList{
 				((Node)elem).next=unekoa;
 				
 			}
-			else {
-				aurrekoa=unekoa;
-				unekoa=unekoa.next;
-			}
-		}
-	}
-	
-	public void setDeskr(String nom) {
-		super.deskr=nom;
-	}
-	
-	public String getDeskr() {
-		return super.deskr;
-	}
-	
-	public T removeFirst() {
-		T emaitza;
-		
-		//Solo hay un elemento
-		if(super.last.next==null) {
-			emaitza=(T)super.last;
-			super.last=null;
-		}
-		else {
-			Node unekoa=super.last.next;
-			emaitza=(T)super.last.next;
-			super.last.next=unekoa.next;
-		}
-	
-		return emaitza;
-		
-	}
-	
-	public T removeLast() {
-		T emaitza;
-		Node unekoa=super.last.next;
-		while(unekoa!=super.last) {
+			aurrekoa=unekoa;
 			unekoa=unekoa.next;
+			
 		}
-		T emaitza=(T) super.last;
-		unekoa.next=super.last.next;
-		super.last=unekoa;
-		
-		return emaitza;
-	}
-	
-	public T remove(T elem) {
-		// Balio hori listan baldin badago, bere lehen agerpena ezabatuko dut. 
-		//Kendutako objektuaren erreferentzia bueltatuko du (null ez baldin badago)
-		
-		Node unekoa=super.last.next;
-		Node aurrekoa;
-		
-		T emaitza;
-		while(unekoa!=super.last) {
-			if(unekoa.data.equals(((Node) elem).data)) {
-				
-			}
-		}
-		
-	}
-	
-	public T first() {
-		
-	}
-	
-	public T last() {
-		
-	}
-	
-	public boolean contains(T elem) {
-		
-	}
-	
-	public T find(T elem) {
-		
-	}
-	
-	public boolean isEmpty() {
-		
-	}
-	
-	public int size() {
-		
-	}
-	
-	public Iterator<T> iterator(){
-		
 	}
 	
 	

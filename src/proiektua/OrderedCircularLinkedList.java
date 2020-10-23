@@ -1,4 +1,4 @@
-package proiektua;
+/*package proiektua;
 
 
 import java.util.LinkedList;
@@ -86,4 +86,4 @@ public class OrderedCircularLinkedList<T> extends CircularLinkedList extends Com
 	}
 	
 	
-}
+}*/
