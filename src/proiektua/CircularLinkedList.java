@@ -99,6 +99,11 @@ public class CircularLinkedList<T> {
 					aurrekoa=unekoa;
 					unekoa=unekoa.next;		
 				}
+				if(unekoa.data.equals(((Node) elem).data)) {
+					emaitza=(T)unekoa;
+					aurrekoa.next=unekoa.next;
+					unekoa=unekoa.next;
+				}
 			}
 		
 		}
@@ -119,25 +124,82 @@ public class CircularLinkedList<T> {
 	
 	public boolean contains(T elem) {
 		boolean emaitza=false;
-		
+		Node unekoa=this.last.next;
+		while(unekoa!=this.last) {
+			if(unekoa.data.equals((String)elem)) {
+				emaitza=true;
+			}
+			unekoa=unekoa.next;
+		}
+		if(unekoa.data.equals((String)elem)) {
+			emaitza=true;
+		}
+		return emaitza;
 		
 	}
 	
 	public T find(T elem) {
-		
+		boolean emaitza=false;
+		Node unekoa=this.last.next;
+		T ema=null;
+		while(unekoa!=this.last) {
+			if(unekoa.data.equals((String)elem)) {
+				emaitza=true;
+				ema=(T)unekoa;
+			}
+			unekoa=unekoa.next;
+		}
+		if(unekoa.data.equals((String)elem)) {
+			emaitza=true;
+			ema=(T)unekoa;
+		}
+		return ema;
 	}
 	
 	public boolean isEmpty() {
+		if(this.last==null) {
+			return true;
+		}
+		else {
+			return false;
+		}
 		
 	}
 	
 	public int size() {
-		
+		Node unekoa=this.last.next;
+		int kont=0;
+		while(unekoa!=this.last) {
+			kont++;
+			unekoa=unekoa.next;
+		}
+		return kont+1;
 	}
 	
-	public Iterator<T> iterator(){
-		
+	public ListIterator<T> iterator(){
+		return new ListIterator();
 	}
+	
+	private class ListIterator<T> {
+		public Node current;
+		public int size;
+		
+		public boolean hasNext() {
+			if(size==0) {
+				return false;
+			}
+			else {
+				return true;
+			}
+		}
+		public T next() {
+			T emaitza=(T)current.data;
+			size--;
+			current=current.next;
+			return emaitza;
+		}
+	}
+
 
 
 }
