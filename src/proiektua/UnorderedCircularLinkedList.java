@@ -15,7 +15,7 @@ public class UnorderedCircularLinkedList<T> extends CircularLinkedList{
 		Node azkenekoa=(Node)super.last;
 		
 		// Zerrenda hutsa bada
-		if(azkenekoa==null) {
+		if(super.isEmpty()) {
 			azkenekoa=(Node)elem;
 			((Node) elem).next=azkenekoa;
 		}
@@ -25,17 +25,16 @@ public class UnorderedCircularLinkedList<T> extends CircularLinkedList{
 		}
 	}
 	
+	//Sartu amaieran
 	public void addToRear(T elem) {
-			
-		Node azkenekoa=(Node)super.last;
+		Node azkenekoa = (Node)super.last;
 		
-		// Zerrenda hutsa bada
-		if(azkenekoa==null) {
+		if(super.isEmpty()) {
 			azkenekoa=(Node)elem;
 			((Node) elem).next=azkenekoa;
 		}
 		else {
-			azkenekoa.next=(Node)elem;
+			azkenekoa.next=(Node) elem;
 			((Node) elem).next=azkenekoa.next.next;
 		}
 		
