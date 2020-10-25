@@ -4,11 +4,11 @@ package proiektua;
 import java.util.LinkedList;
 
 
+
 public class UnorderedCircularLinkedList<T> extends CircularLinkedList{
 	
 	public UnorderedCircularLinkedList(String d, int c) {
 
-		super(d,c);
 	}
 
 	public void addToFront(T elem) {
@@ -42,14 +42,18 @@ public class UnorderedCircularLinkedList<T> extends CircularLinkedList{
 	
 	public void addAfter(T elem, T target) {
 
-		
+		/*
 		//Target zerrendan dago
 		
-		Node unekoa=super.last.next;
-		Node aurrekoa;
+		
 		boolean aurkitua=false;
-		while(unekoa!=super.last || !aurkitua) {
-			if (unekoa.data.equals(((Node)target).data)) {
+		ListIterator it=super.iterator();
+		int i;
+		
+		while(it.hasNext() || !aurkitua) {
+			i=(int)it.next();
+			
+			if (i==((Node) target).data) {
 				aurkitua=true;
 				
 				aurrekoa=unekoa;
@@ -69,8 +73,11 @@ public class UnorderedCircularLinkedList<T> extends CircularLinkedList{
 			((Node)elem).next=unekoa;
 			
 		}
-		
+		*/
 	}
+	
+	
+	
 	
 	
 }

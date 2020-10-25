@@ -8,9 +8,8 @@ public class CircularLinkedList<T> {
 	protected String deskr;
 	protected int count;
 	
-	public CircularLinkedList(String de, int c) {
-		this.deskr=de;
-		this.count=c;
+	public CircularLinkedList() {
+		
 	}
 	
 	public void setDeskr(String nom) {
@@ -198,7 +197,7 @@ public class CircularLinkedList<T> {
 		return new ListIterator();
 	}
 	
-	private class ListIterator<T> {
+	public class ListIterator<T> {
 		public Node current;
 		public int size;
 		public boolean hasNext() {
