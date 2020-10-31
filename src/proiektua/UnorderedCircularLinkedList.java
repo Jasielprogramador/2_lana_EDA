@@ -20,8 +20,8 @@ public class UnorderedCircularLinkedList<T> extends CircularLinkedList{
 			((Node) elem).next=azkenekoa;
 		}
 		else {
+			((Node) elem).next=azkenekoa.next;
 			azkenekoa.next=(Node)elem;
-			((Node) elem).next=azkenekoa.next.next;
 		}
 	}
 	
@@ -34,36 +34,32 @@ public class UnorderedCircularLinkedList<T> extends CircularLinkedList{
 			((Node) elem).next=azkenekoa;
 		}
 		else {
+			((Node) elem).next=azkenekoa.next;
 			azkenekoa.next=(Node) elem;
-			((Node) elem).next=azkenekoa.next.next;
+			azkenekoa=(Node) elem;
 		}
 		
 	}
 	
 	public void addAfter(T elem, T target) {
-
-		/*
+		
 		//Target zerrendan dago
 		
 		
 		boolean aurkitua=false;
 		ListIterator it=super.iterator();
-		int i;
+		T t;
 		
 		while(it.hasNext() || !aurkitua) {
-			i=(int)it.next();
+			t=(T) it.next();
 			
-			if (i==((Node) target).data) {
+			if (((Node) target).equals(t)) {
 				aurkitua=true;
 				
-				aurrekoa=unekoa;
-				unekoa=unekoa.next;
-				aurrekoa.next=((Node)elem);
-				((Node)elem).next=unekoa;
+				((Node) elem).next=((Node) t).next;
+				((Node) t).next=(Node) elem;
 				
 			}
-			aurrekoa=unekoa;
-			unekoa=unekoa.next;
 			
 		}
 		if (unekoa.data.equals(((Node)target).data)) {
@@ -73,7 +69,7 @@ public class UnorderedCircularLinkedList<T> extends CircularLinkedList{
 			((Node)elem).next=unekoa;
 			
 		}
-		*/
+		
 	}
 	
 	

@@ -200,7 +200,9 @@ public class CircularLinkedList<T>{
 	public class ListIterator<T> {
 		public Node current;
 		public int size;
+		
 		public boolean hasNext() {
+			
 			if(size==0) {
 				return false;
 			}
