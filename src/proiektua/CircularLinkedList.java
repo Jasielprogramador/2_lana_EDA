@@ -3,7 +3,7 @@ package proiektua;
 import java.util.LinkedList;
 
 
-public class CircularLinkedList<T> {
+public class CircularLinkedList<T>{
 	protected Node last;
 	protected String deskr;
 	protected int count;
