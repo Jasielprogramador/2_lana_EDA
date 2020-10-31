@@ -1,22 +1,24 @@
 package proiektua;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 
 
-public class CircularLinkedList<T>{
+public class CircularLinkedList<T> implements ListADT<T>{
 	protected Node last;
 	protected String deskr;
 	protected int count;
 	
-	public CircularLinkedList() {
-		
+	public CircularLinkedList(String des) {
+		this.setDescr(des); 
+		this.count = 0;
 	}
 	
-	public void setDeskr(String nom) {
+	public void setDescr(String nom) {
 		this.deskr=nom;
 	}
 	
-	public String getDeskr() {
+	public String getDescr() {
 		return this.deskr;
 	}
 	
@@ -59,7 +61,7 @@ public class CircularLinkedList<T>{
 				while(unekoa!=this.last) {
 					unekoa=unekoa.next;
 				}
-				emaitza=(T) this.last;
+				emaitza =(T) this.last.data;
 				unekoa.next=this.last.next;
 				this.last=unekoa;
 			}
@@ -193,8 +195,8 @@ public class CircularLinkedList<T>{
 		return kont+1;
 	}
 	
-	public ListIterator<T> iterator(){
-		return new ListIterator();
+	public Iterator<T> iterator(){
+		return (Iterator<T>) new ListIterator();
 	}
 	
 	public class ListIterator<T> {

@@ -5,71 +5,69 @@ import java.util.LinkedList;
 
 
 
-public class UnorderedCircularLinkedList<T> extends CircularLinkedList{
+public class UnorderedCircularLinkedList<T> extends CircularLinkedList implements UnorderedListADT<T> {
 	
-	public UnorderedCircularLinkedList(String d, int c) {
-
+	public UnorderedCircularLinkedList(String d) {
+		super(d);
 	}
 
 	public void addToFront(T elem) {
-		Node azkenekoa=(Node)super.last;
-		
-		// Zerrenda hutsa bada
-		if(super.isEmpty()) {
-			azkenekoa=(Node)elem;
-			((Node) elem).next=azkenekoa;
-		}
-		else {
-			((Node) elem).next=azkenekoa.next;
-			azkenekoa.next=(Node)elem;
-		}
-	}
+        Node azkenekoa=(Node)super.last;
+        Node berria=new Node(elem);
+
+        // Zerrenda hutsa bada
+        if(super.isEmpty()) {
+            azkenekoa=berria;
+            berria.next=azkenekoa;
+        }
+        else {
+            berria.next=azkenekoa.next;
+            azkenekoa.next=berria;
+        }
+        this.count++;
+    }
 	
 	//Sartu amaieran
-	public void addToRear(T elem) {
-		Node azkenekoa = (Node)super.last;
-		
-		if(super.isEmpty()) {
-			azkenekoa=(Node)elem;
-			((Node) elem).next=azkenekoa;
-		}
-		else {
-			((Node) elem).next=azkenekoa.next;
-			azkenekoa.next=(Node) elem;
-			azkenekoa=(Node) elem;
-		}
-		
-	}
+	 public void addToRear(T elem) {
+	        Node azkenekoa = (Node)super.last;
+	        Node berria=new Node(elem);
+
+	        if(super.isEmpty()) {
+	            azkenekoa=berria;
+	            berria.next=azkenekoa;
+	        }
+	        else {
+	            berria.next=azkenekoa.next;
+	            azkenekoa.next=berria;
+	            azkenekoa=berria;
+	        }
+	        this.count++;
+	    }
 	
 	public void addAfter(T elem, T target) {
 		
-		//Target zerrendan dago
-		
-		
+		Node<T> orain = this.last;
 		boolean aurkitua=false;
-		ListIterator it=super.iterator();
-		T t;
 		
-		while(it.hasNext() || !aurkitua) {
-			t=(T) it.next();
-			
-			if (((Node) target).equals(t)) {
-				aurkitua=true;
+		if (target != null && this.last!=null && elem!=null) {
+			do  {
+				if (orain.equals(target)) {
 				
-				((Node) elem).next=((Node) t).next;
-				((Node) t).next=(Node) elem;
+					aurkitua=true;
 				
-			}
-			
+					if (orain==this.last)
+					this.addToRear(elem);
+					else {
+						Node<T> berri = new Node<T>(elem);
+						berri.next = orain.next;
+						orain.next=berri;
+						this.count++;
+					}
+				}
+				else
+					orain=orain.next;
+			}while(!aurkitua && orain!=this.last);
 		}
-		if (unekoa.data.equals(((Node)target).data)) {
-			aurrekoa=unekoa;
-			unekoa=unekoa.next;
-			aurrekoa.next=((Node)elem);
-			((Node)elem).next=unekoa;
-			
-		}
-		
 	}
 	
 	

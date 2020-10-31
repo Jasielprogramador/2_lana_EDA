@@ -2,10 +2,10 @@ package proiektua;
 
 
 import java.util.LinkedList;
-public class OrderedCircularLinkedList<T> extends CircularLinkedList<T> implements  OrderedListADT<T>{
+public class OrderedCircularLinkedList<T extends Comparable<T>> extends CircularLinkedList<T> implements  OrderedListADT<T>{
 	
-	public OrderedCircularLinkedList(String d, int c) {
-		super();
+	public OrderedCircularLinkedList(String d) {
+		super(d);
 	}
 	
 	public void add(T elem) {
@@ -29,10 +29,15 @@ public class OrderedCircularLinkedList<T> extends CircularLinkedList<T> implemen
 				unekoa=unekoa.next;
 			}
 		}
+		this.count++;
 	}
 	
 	public void merge(OrderedCircularLinkedList<T> lista) {
 		
+		
+		
+		
+		this.count+=lista.count;
 	}
 	
 	
