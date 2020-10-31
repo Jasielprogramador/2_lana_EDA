@@ -1,10 +1,11 @@
 package proiektua;
 
+
 import java.util.Iterator;
 import java.util.LinkedList;
 
 
-public class CircularLinkedList<T> implements ListADT<T>{
+public class CircularLinkedList<T> implements ListADT<T>,Iterable<T>{
 	protected Node<T> last;
 	protected String deskr;
 	protected int count;
@@ -209,11 +210,12 @@ public class CircularLinkedList<T> implements ListADT<T>{
 	}
 	
 	public Iterator<T> iterator(){
-		return (Iterator<T>) new ListIterator();
+		return new ListIterator();
 	}
 	
-	public class ListIterator<T> {
-		public Node current;
+	
+	public class ListIterator<T> implements Iterator<T>{
+		public Node<T> current;
 		public int size;
 		
 		public boolean hasNext() {
@@ -226,10 +228,10 @@ public class CircularLinkedList<T> implements ListADT<T>{
 			}
 		}
 		public T next() {
-			T emaitza=(T)current.data;
+			Node<T> emaitza=current;
 			size--;
 			current=current.next;
-			return emaitza;
+			return emaitza.data;
 		}
 	}
 
