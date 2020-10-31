@@ -12,8 +12,8 @@ public class UnorderedCircularLinkedList<T> extends CircularLinkedList implement
 	}
 
 	public void addToFront(T elem) {
-        Node azkenekoa=(Node)super.last;
-        Node berria=new Node(elem);
+        Node<T> azkenekoa=(Node)super.last;
+        Node<T> berria=new Node(elem);
 
         // Zerrenda hutsa bada
         if(super.isEmpty()) {
@@ -29,8 +29,8 @@ public class UnorderedCircularLinkedList<T> extends CircularLinkedList implement
 	
 	//Sartu amaieran
 	 public void addToRear(T elem) {
-	        Node azkenekoa = (Node)super.last;
-	        Node berria=new Node(elem);
+	        Node<T> azkenekoa = (Node)super.last;
+	        Node<T> berria=new Node(elem);
 
 	        if(super.isEmpty()) {
 	            azkenekoa=berria;

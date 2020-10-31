@@ -5,7 +5,7 @@ import java.util.LinkedList;
 
 
 public class CircularLinkedList<T> implements ListADT<T>{
-	protected Node last;
+	protected Node<T> last;
 	protected String deskr;
 	protected int count;
 	
@@ -29,15 +29,16 @@ public class CircularLinkedList<T> implements ListADT<T>{
 			System.out.println("Zerrenda hutsa");
 		}
 		else {
-			
+			Node<T> unekoa;
 			//Solo hay un elemento
 			if(this.last.next==this.last) {
-				emaitza=(T)this.last;
+				unekoa=this.last;
+				emaitza=unekoa.data;
 				this.last=null;
 			}
 			else {
-				Node unekoa=this.last.next;
-				emaitza=(T)this.last.next;
+				unekoa=this.last.next;
+				emaitza=unekoa.data;
 				this.last.next=unekoa.next;
 			}
 		}
@@ -56,17 +57,18 @@ public class CircularLinkedList<T> implements ListADT<T>{
 			System.out.println("Zerrenda hutsa");
 		}
 		else {
+			Node<T> aurrekoa=this.last;
+			Node<T> unekoa=this.last.next;
 			if(this.last.next!=this.last) {
-				Node unekoa=this.last.next;
 				while(unekoa!=this.last) {
 					unekoa=unekoa.next;
 				}
-				emaitza =(T) this.last.data;
+				emaitza =aurrekoa.data;
 				unekoa.next=this.last.next;
 				this.last=unekoa;
 			}
 			else {
-				emaitza=(T)this.last;
+				emaitza=aurrekoa.data;
 				this.last=null;
 			}
 		}
@@ -80,9 +82,11 @@ public class CircularLinkedList<T> implements ListADT<T>{
 		// Balio hori listan baldin badago, bere lehen agerpena ezabatuko dut. 
 		//Kendutako objektuaren erreferentzia bueltatuko du (null ez baldin badago)
 		
-		Node aurrekoa=null;
-		Node unekoa=this.last.next;
+		Node<T> aurrekoa=null;
+		Node<T> unekoa=this.last.next;
 		T emaitza=null;
+		Node<T> berria = new Node (elem);
+		boolean aurkitua=false;
 		
 		if(!this.isEmpty()) {
 			//Elementu bakarra
@@ -91,19 +95,25 @@ public class CircularLinkedList<T> implements ListADT<T>{
 				this.last=null;
 			}
 			else {
-				while(unekoa!=this.last) {
-					if(unekoa.data.equals(((Node) elem).data)) {
-						emaitza=(T)unekoa;
+				while(unekoa!=this.last && !aurkitua) {
+					if(unekoa.data.equals(berria.data)) {
+						emaitza=unekoa.data;
 						aurrekoa.next=unekoa.next;
 						unekoa=unekoa.next;
+						aurkitua=true;
 					}
 					aurrekoa=unekoa;
 					unekoa=unekoa.next;		
 				}
-				if(unekoa.data.equals(((Node) elem).data)) {
-					emaitza=(T)unekoa;
+				if(unekoa.data.equals(berria.data)) {
+					emaitza=unekoa.data;
 					aurrekoa.next=unekoa.next;
 					unekoa=unekoa.next;
+					aurkitua=true;
+				}
+				
+				if(!aurkitua) {
+					emaitza=null;
 				}
 			}
 		
@@ -116,25 +126,27 @@ public class CircularLinkedList<T> implements ListADT<T>{
 	}
 	
 	public T first() {
-		return (T)this.last.next;
+		return this.last.data;
 	}
 	
 	public T last() {
-		return (T)this.last;
+		return this.last.data;
 	}
 	
 	public boolean contains(T elem) {
 		boolean emaitza=false;
-		Node unekoa=this.last.next;
+		Node<T> unekoa=this.last.next;
+		Node<T> berria = new Node(elem);
+		
 		if(!this.isEmpty()) {
 		
 			while(unekoa!=this.last) {
-				if(unekoa.data.equals((String)elem)) {
+				if(unekoa.data.equals(berria.data)) {
 					emaitza=true;
 				}
 				unekoa=unekoa.next;
 			}
-			if(unekoa.data.equals((String)elem)) {
+			if(unekoa.data.equals(berria.data)) {
 				emaitza=true;
 			}
 		}
@@ -148,20 +160,21 @@ public class CircularLinkedList<T> implements ListADT<T>{
 	
 	public T find(T elem) {
 		boolean emaitza=false;
-		Node unekoa=this.last.next;
+		Node<T> unekoa=this.last.next;
 		T ema=null;
+		Node<T> berria=new Node(elem);
 		
 		if(!this.isEmpty()) {
 			while(unekoa!=this.last) {
-				if(unekoa.data.equals((String)elem)) {
+				if(unekoa.data.equals(berria.data)) {
 					emaitza=true;
-					ema=(T)unekoa;
+					ema=unekoa.data;
 				}
 				unekoa=unekoa.next;
 			}
-			if(unekoa.data.equals((String)elem)) {
+			if(unekoa.data.equals(berria.data)) {
 				emaitza=true;
-				ema=(T)unekoa;
+				ema=unekoa.data;
 			}
 		}
 		else {
@@ -181,7 +194,7 @@ public class CircularLinkedList<T> implements ListADT<T>{
 	}
 	
 	public int size() {
-		Node unekoa=this.last.next;
+		Node<T> unekoa=this.last.next;
 		int kont=0;
 		if(this.isEmpty()) {
 			System.out.println("Zerrenda hutsa");
