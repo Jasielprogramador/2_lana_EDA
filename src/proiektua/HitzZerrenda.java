@@ -1,25 +1,24 @@
 package proiektua;
 
 import java.io.FileNotFoundException;
+
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
 
 public class HitzZerrenda {
 
-	UnorderedCircularLinkedList<String> Hitzak = new UnorderedCircularLinkedList<String>("First",0); 
+	UnorderedCircularLinkedList<String> Hitzak = new UnorderedCircularLinkedList<String>("First"); 
 	
 	public void listaKargatu() {
 		try {
 			Scanner sarrera=new Scanner(new FileReader("words.txt"));
 			String lerroa;
-			
-			while(sarrera.hasNextLine()) {
+			int kont=0;
+			while(sarrera.hasNextLine() && kont<10) {
 				lerroa=sarrera.nextLine();
-				//Gakoa g=new Gakoa(lerroa);
-				//this.lista.add(g);
+				Hitzak.addToRear(lerroa);
 			}
-			sarrera.close();
 		}
 		catch (FileNotFoundException e)
 	    {
