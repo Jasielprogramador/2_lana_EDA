@@ -11,29 +11,37 @@ public class OrderedCircularLinkedList<T extends Comparable<T>> extends Circular
 	}
 	
 	public void add(T elem) {
-		Node unekoa=super.last.next;
-		Node aurrekoa=null;
-		boolean aurkitua=false;
+		Node berria=new Node(elem);
 		
-		while(unekoa!=super.last || !aurkitua) {
-			if(unekoa.data.equals(((Node) elem).next.data)){
-				if(aurrekoa==null) {
-					super.last.next=((Node)elem);
-					((Node)elem).next=unekoa;
+		if(this.isEmpty()) {
+			this.last=berria;
+			berria.next=berria;
+		}
+		else {
+			Node unekoa=this.last.next;
+			Node aurrekoa=null;
+			boolean aurkitua=false;
+			
+			while(unekoa!=this.last || !aurkitua) {
+				if(unekoa.data.equals(berria.next.data)){
+					if(aurrekoa==null) {
+						this.last.next=berria;
+						berria.next=unekoa;
+					}
+					else {
+						aurrekoa.next=berria;
+						berria.next=unekoa;
+					}
 				}
 				else {
-					aurrekoa.next=((Node)elem);
-					((Node)elem).next=unekoa;
+					aurrekoa=unekoa;
+					unekoa=unekoa.next;
 				}
 			}
-			else {
-				aurrekoa=unekoa;
-				unekoa=unekoa.next;
-			}
+			this.count++;
 		}
-		this.count++;
 	}
-	
+		
 	
 	public void merge(OrderedCircularLinkedList<T> lista) {
 		if (lista.isEmpty()) {

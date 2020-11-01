@@ -12,34 +12,32 @@ public class UnorderedCircularLinkedList<T> extends CircularLinkedList implement
 	}
 
 	public void addToFront(T elem) {
-        Node<T> azkenekoa=(Node)super.last;
         Node<T> berria=new Node(elem);
 
         // Zerrenda hutsa bada
         if(super.isEmpty()) {
-            azkenekoa=berria;
-            berria.next=azkenekoa;
+        	berria.next=berria;
+            this.last=berria;
         }
         else {
-            berria.next=azkenekoa.next;
-            azkenekoa.next=berria;
+            berria.next=this.last.next;
+            this.last.next=berria;
         }
         this.count++;
     }
 	
 	//Sartu amaieran
 	 public void addToRear(T elem) {
-	        Node<T> azkenekoa = (Node)super.last;
 	        Node<T> berria=new Node(elem);
 
 	        if(super.isEmpty()) {
-	            azkenekoa=berria;
-	            berria.next=azkenekoa;
+	        	berria.next=berria;
+	            this.last=berria;
 	        }
 	        else {
-	            berria.next=azkenekoa.next;
-	            azkenekoa.next=berria;
-	            azkenekoa=berria;
+	            berria.next=this.last.next;
+	            this.last.next=berria;
+	            this.last=berria;
 	        }
 	        this.count++;
 	    }
@@ -51,7 +49,7 @@ public class UnorderedCircularLinkedList<T> extends CircularLinkedList implement
 		
 		if (target != null && this.last!=null && elem!=null) {
 			do  {
-				if (orain.equals(target)) {
+				if (orain.data.equals(target)) {
 				
 					aurkitua=true;
 				
@@ -69,8 +67,6 @@ public class UnorderedCircularLinkedList<T> extends CircularLinkedList implement
 			}while(!aurkitua && orain!=this.last);
 		}
 	}
-	
-	
 	
 	
 	
